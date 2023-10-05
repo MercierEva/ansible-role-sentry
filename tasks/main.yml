@@ -68,5 +68,6 @@
         --password "{{ item.password }}"
         --superuser
         --no-input
+        --force-update
   loop: "{{ sentry_superusers }}"
   ignore_errors: true
