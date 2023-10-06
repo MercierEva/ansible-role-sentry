@@ -63,11 +63,10 @@
   command:
     chdir: "{{ sentry_docker_compose_project_folder }}"
     cmd: >
-      docker-compose run --rm web createuser
+      docker-compose run --rm -e DOCKER_PLATFORM='linux/amd64' web createuser
         --email "{{ item.email }}"
         --password "{{ item.password }}"
         --superuser
         --no-input
-        --force-update
   loop: "{{ sentry_superusers }}"
   ignore_errors: true
